@@ -42,18 +42,22 @@ class Series(BasePlayable):
         return f"{self.title} S{self.season_number_two_digits}E{self.series_number_two_digits}"
 
 
-def add_movie(title: str, release_year: int, genre: str):
-    movie = Movie(title, release_year, genre)
-    MOVIE_LIBRARY.append(movie)
+class Add_Movie(BasePlayable):
+    def __init__(
+            self, title: str, release_year: int,
+            genre: str, season_number: int, series_number: int
+    ):
+      movie = Movie(title, release_year, genre)
+      MOVIE_LIBRARY.append(movie)
 
 
-def add_serial(title: str, release_year: int, genre: str, season_number: int, series_number: int):
-    serial = Series(title, release_year, genre, season_number, series_number)
-    MOVIE_LIBRARY.append(serial)
+    def add_serial(title: str, release_year: int, genre: str, season_number: int, series_number: int):
+       serial = Series(title, release_year, genre, season_number, series_number)
+       MOVIE_LIBRARY.append(serial)
 
 
-def get_movies():
-    return list(
+    def get_movies():
+        return list(
         sorted(
             filter(
                 lambda item: isinstance(item, Movie), MOVIE_LIBRARY
@@ -62,8 +66,8 @@ def get_movies():
         )
     )
 
-def get_series():
-    return list(
+    def get_series():
+         return list(
         sorted(
             filter(
                 lambda item: isinstance(item, Series), MOVIE_LIBRARY
@@ -72,5 +76,20 @@ def get_series():
         )
     )
 
-def search(query):
-    return list(filter(lambda item: item.title == query, MOVIE_LIBRARY))
+    def search(query):
+        return list(filter(lambda item: item.title == query, MOVIE_LIBRARY))
+
+
+    def general_views() :
+        for _ in range(MOVIE_LIBRARY) :
+            return f"{ play(self) for _ in (0 , 100)}"
+
+
+    def ten() :
+         return f"{(general_views)*10}"
+
+
+    def top_titles() :
+        return F"(self.title: int) if self.watch_count == max"
+
+
